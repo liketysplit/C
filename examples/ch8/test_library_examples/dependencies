@@ -1,0 +1,4 @@
+./obj_files/message_hider.o: src_files/message_hider.c \
+ ../library_example_1/inc_files/encrypt.h \
+ ../library_example_1/inc_files/decrypt.h \
+ ../library_example_1/inc_files/checksum.h

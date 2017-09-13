@@ -1,0 +1,26 @@
+SRC_DIR = ./src_files
+INC_DIR = -I./inc_files -I../library_example_1/inc_files
+OBJ_DIR = ./obj_files
+LIB_DIR = -L./lib_files -L../library_example_1/lib_files
+BIN_DIR = ./bin_files
+
+CC = gcc
+_OBJS = message_hider.o
+OBJS = $(patsubst %, $(OBJ_DIR)/%, $(_OBJS))
+_SRCS = $(patsubst %.o, %.c, $(_OBJS))
+SRCS = $(patsubst %, $(SRC_DIR)/%, $(_SRCS))
+CFLAGS = -g $(INC_DIR)
+LDFLAGS = $(LIB_DIR) -lhfsecurity -lm
+
+all: $(BIN_DIR)/message_hider_static
+
+$(BIN_DIR)/message_hider_static: $(OBJS) 
+	$(CC) $^ $(LDFLAGS) -o $@
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	$(CC) -c $< $(CFLAGS) -o $@ 
+
+dependencies:  $(SRCS)
+	$(CC) -I$(INC_DIR) -MM $^ | sed '/^.*.o:/ s#^#$(OBJ_DIR)/#' > $@
+
+include dependencies

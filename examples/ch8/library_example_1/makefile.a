@@ -1,0 +1,24 @@
+SRC_DIR = ./src_files
+INC_DIR = ./inc_files
+OBJ_DIR = ./obj_files
+LIB_DIR = ./lib_files
+
+CC = gcc
+_OBJS = encrypt.o decrypt.o checksum.o
+OBJS = $(patsubst %, $(OBJ_DIR)/%, $(_OBJS))
+_SRCS = $(patsubst %.o, %.c, $(_OBJS))
+SRCS = $(patsubst %, $(SRC_DIR)/%, $(_SRCS))
+CFLAGS = -g -I$(INC_DIR)
+
+all: $(LIB_DIR)/libhfsecurity.a
+
+$(LIB_DIR)/libhfsecurity.a: $(OBJS) 
+	ar -rcs $@ $^
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	$(CC) $(CFLAGS) -o $@ -c $<
+
+dependencies_a:  $(SRCS)
+	$(CC) -I$(INC_DIR) -MM $^ | sed '/^.*.o:/ s#^#$(OBJ_DIR)/#' > $@
+
+include dependencies_a

@@ -1,0 +1,3 @@
+./obj_files/encrypt.o: src_files/encrypt.c inc_files/encrypt.h
+./obj_files/decrypt.o: src_files/decrypt.c inc_files/decrypt.h inc_files/encrypt.h
+./obj_files/checksum.o: src_files/checksum.c inc_files/checksum.h
