@@ -90,33 +90,15 @@ int main(int argc, char *argv[])
 }
 
 void *mymemmove(void *to, const void *src, size_t n){
-
-  //Instructions:
   // return memmove(to, src, n);
   // Replece the return statement above with your implementation of the function...
   //Create a new temp array to store the data in
-  
-   //MyCode:
-   //Create a temp array to pass values around
-   //Used to make sure data is not overwritten
-   char *tempChar = new char[n];
-   //Create pointers to be able to use memory addresses
-   char *pointerTo = (char *)to;
-   char *pointerSrc = (char *)src;
-   
- 
-   // Copies the data from 
-   for (int i=0; i<n; i++)
-       tempChar[i] = pointerSrc[i];
- 
-   // Copy data from temp[] to cdest[]
-   for (int i=0; i<n; i++)
-       pointerTo[i] = tempChar[i];
- 
-   //Delete so that on future use it will be blank
-   delete [] tempChar;
-
+  char * temp = new char[n];
+  //Store data in temp
+  for( int i = 0; i < n ; i++)
+      temp[i] = src[i];
+  //Move data to dsetination
+  for( int i = 0; i < n ; i++)
+      to[i] = temp[i];
 }
-
-
 
