@@ -58,6 +58,9 @@ int main(){
 		push( s, temp, &s_top, STACK_SIZE);
 		}
 
+		// for(int x=0;x<sizeof(s)/sizeof(double);x++)
+		// 	printf("\n%1.2lf", s[x]);
+
 		while(myerror != STACK_EMPTY){
 		printf( "\nPopping: %1.1lf" ,pop( s, &s_top));
 		}

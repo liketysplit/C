@@ -97,24 +97,27 @@ void *mymemmove(void *to, const void *src, size_t n){
   //Create a new temp array to store the data in
   
    //MyCode:
+  
    //Create a temp array to pass values around
    //Used to make sure data is not overwritten
-   char *tempChar = new char[n];
+   
+   char temp[n];
+   char *tempChar = temp;
    //Create pointers to be able to use memory addresses
    char *pointerTo = (char *)to;
    char *pointerSrc = (char *)src;
-   
+   int i;
  
    // Copies the data from 
-   for (int i=0; i<n; i++)
+   for (i = 0; i<n; i++)
        tempChar[i] = pointerSrc[i];
  
    // Copy data from temp[] to cdest[]
-   for (int i=0; i<n; i++)
+   for (i = 0; i<n; i++)
        pointerTo[i] = tempChar[i];
  
    //Delete so that on future use it will be blank
-   delete [] tempChar;
+   //free(tempChar);
 
 }
 
