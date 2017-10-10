@@ -2,9 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
-// #include <ctype.h>
-// #include <err.h>
-// #include <errno.h>
+
 int main(int argc, char *argv[]){
   // Get the options (-c, -d, -u, some combinations of them, or none at all)
   // ... ...
