@@ -1,0 +1,1 @@
+int organismsCalculator(int, int, int);

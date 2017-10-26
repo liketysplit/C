@@ -1,0 +1,1 @@
+void lifeRules(int, int);

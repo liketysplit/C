@@ -1,0 +1,16 @@
+CC = gcc
+OBJ = encrypt.o decrypt.o message_hider.o
+SRCS = $(patsubst %.o, %.c, $(OBJS))
+CFLAGS = -g
+LDFLAGS = -lm
+
+message_hider: $(OBJ) 
+	$(CC) $^ $(LDFLAGS) -o $@
+
+%.o: %.c
+	$(CC) $(CFLAGS) -o $@ -c $<
+
+dependencies: $(SRCS)
+	$(CC) -MM $^ > $@
+
+include dependencies

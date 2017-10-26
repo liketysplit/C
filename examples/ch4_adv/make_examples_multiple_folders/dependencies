@@ -1,0 +1,4 @@
+./obj_files/encrypt.o: src_files/encrypt.c inc_files/encrypt.h
+./obj_files/decrypt.o: src_files/decrypt.c inc_files/decrypt.h inc_files/encrypt.h
+./obj_files/message_hider.o: src_files/message_hider.c inc_files/encrypt.h \
+ inc_files/decrypt.h

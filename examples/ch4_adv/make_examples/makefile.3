@@ -1,0 +1,18 @@
+CC = gcc
+CFLAGS = -g
+LDFLAGS = -lm
+OBJS = encrypt.o decrypt.o message_hider.o
+
+all: message_hider
+
+message_hider: $(OBJS)
+	$(CC) $^ $(LDFLAGS) -o $@
+
+message_hider.o: message_hider.c decrypt.h encrypt.h
+	$(CC) $(CFLAGS) -c $< -o $@
+
+decrypt.o: decrypt.c decrypt.h encrypt.h
+	$(CC) $(CFLAGS) -c $< -o $@
+
+encrypt.o: encrypt.c encrypt.h
+	$(CC) $(CFLAGS) -c $< -o $@
