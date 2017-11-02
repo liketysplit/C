@@ -1,0 +1,5 @@
+./obj_files/basic_stat.o: src_files/basic_stat.c inc_files/globals.h inc_files/sum.h \
+  inc_files/mean.h inc_files/stdev.h
+./obj_files/mean.o: src_files/mean.c inc_files/mean.h inc_files/globals.h
+./obj_files/sum.o: src_files/sum.c inc_files/sum.h inc_files/globals.h
+./obj_files/stdev.o: src_files/stdev.c inc_files/stdev.h inc_files/globals.h
