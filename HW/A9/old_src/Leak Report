@@ -1,0 +1,28 @@
+Leak With only insert
+==3037== LEAK SUMMARY:
+==3037==    definitely lost: 16 bytes in 1 blocks
+==3037==    indirectly lost: 62 bytes in 5 blocks
+==3037==      possibly lost: 72 bytes in 3 blocks
+==3037==    still reachable: 4,296 bytes in 7 blocks
+==3037==         suppressed: 21,933 bytes in 154 blocks
+
+Leak With All
+==3051== LEAK SUMMARY:
+==3051==    definitely lost: 0 bytes in 0 blocks
+==3051==    indirectly lost: 0 bytes in 0 blocks
+==3051==      possibly lost: 72 bytes in 3 blocks
+==3051==    still reachable: 4,296 bytes in 7 blocks
+==3051==         suppressed: 21,933 bytes in 154 blocks
+
+
+
+
+Jack
+Steven
+Scott
+Ivan
+Matthew
+Leah
+Nicholas
+Naomi
+cs3335_a9_boles.tar
