@@ -1,25 +1,28 @@
 #include "j.h"
 #include "cl.h"
 
-//Node Structure
 typedef struct soldier_type{
 	char *name;
 	struct soldier_type *next;
 }soldier;
 
-//Node Creation
+
 soldier *create(const char *name){
 	soldier *s;
 	if((s= malloc(sizeof(soldier)))==NULL){
 		printf("Out of memory on heap.\n");
 		return NULL;
 	}
+
 	if((s->name= calloc(10, sizeof(char)))==NULL){
 		printf("Out of memory on heap.\n");
 		return NULL;
 	}
 	strcpy(s->name, name);
+
+
 	s->next = NULL;	
+
 	return s;
 }
 
@@ -34,54 +37,61 @@ int main(){
 	int kill;
 	int countOfSoldiers = 0;
 
-	//Read in all of the nodes
 	for (; fgets(name, sizeof(name), stdin) != NULL ;){
 		name[strlen(name)-1]='\0';
 		if( (n=create(name))==NULL)
 			return 1;
-		if(countOfSoldiers==0)
-			start = insert(start,n);
-		if(countOfSoldiers!=0)
-			cursor = insert(start,n);
+		start = insert(start,n);
 		countOfSoldiers++; 		
 	} 
 
-	//Print out all of the nodes in the CLL
-	int tempNum = countOfSoldiers;
-	soldier *temp = cursor;
-	while(tempNum != 0){
-		print(temp);
-		temp=temp->next;
-		tempNum--;
-	}
+	cursor = start;
 
-	//Reset the input via Cntrl D
+	print(start);
+
   	fseek(stdin,0,SEEK_END);
 
-  	//Get the release order
 	printf("\nWhat kill order do you want? ");
 	fgets(name, sizeof(name), stdin);
 	name[strlen(name)-1]='\0';
 	kill = atoi(name);
-
-
-	//Release by the given order
+	soldier *i;
 	int count;
+	//printf("kill order%d\n", kill);
 	while (countOfSoldiers!= 0){
+		//printf("Outer Whileloop Ran\n");
+		//printf("Number of soldiers%d\n", countOfSoldiers);
 		count =0;
 		while(count < kill){
-			if(count == kill-1 ){
+			//printf("Inner Whileloop Ran\n");
+			if(count == kill-1 ){//&& cursor->next != NULL){
+				//printf("count: %d\n", count);
+				//printf("kill order: %d\n", kill);
 				release(cursor);
 				countOfSoldiers--;
 				count++;
 			}
 			else{
+				//printf("count: %d\n", count);
 				count++;
 				cursor = (void *)advance(cursor);
 			}
 
 		}
 	}
-	
+
+	// if(start == NULL){
+	// 	printf("Empty list.\n");
+	// }
+ // 	else{
+
+	// 	soldier *i = cursor;
+	// 	for(; i != NULL; i=i->next){
+	// 		printf("%s\t", i->name);
+	// 	}
+	// }
+
+
+ 
 	return 0;
 }

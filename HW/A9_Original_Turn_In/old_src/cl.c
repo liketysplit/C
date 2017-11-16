@@ -6,49 +6,54 @@ typedef struct soldier_type{
 	struct soldier_type *next;
 }soldier;
 
-//Prints out a given node
+void *start;
+
 void print(void *cursor){
 	if(cursor == NULL){
 		printf("Empty list.\n");
 	}
  	else{
+
 		soldier *i = cursor;
-		printf("%-10s", i->name);
+		for(; i != NULL; i=i->next){
+			printf("%-10s", i->name);
+			if(i->next==NULL){
+				i->next = cursor;
+				break;
+			}
+		}
 	}
 }
 
-//Inserts a node
 void * insert(void *cursor, void *name){
 
-	if (cursor==NULL){
-		soldier *s = name;
-		s->next=name;
-		return s;
-	}
+	if (cursor==NULL)
+		return name;
 	else {
 		soldier *t = cursor;
-		for(; t->next != cursor; t=t->next);
+		for(; t->next != NULL; t=t->next);
 
 		t->next = name;
-		t->next->next = cursor;
-		return name;
+		return cursor;
 	}
 
 }
 
-//Advances to the next node
 void *advance(void *cursor){
+	//printf("Ran Advance\n");
 	soldier *pre = cursor;
+	//printf("Cursor was moved from: %s to: %s\n", pre->name, pre->next->name);
  	return (void *)pre->next;
 }
 
-//Release a node
 void *release(void *cursor){
+		//printf("Ran Release\n");
 		soldier *pre = cursor;
 		soldier *n = pre->next;
 		pre->next = n->next;
 		printf("%15s is Dead!\n", n->name);
 		free (n->name);
 		free (n);
-		return pre;	
+		return pre;
+	
 }

@@ -1,0 +1,2 @@
+./obj_files/j.o: src_files/j.c inc_files/j.h inc_files/cl.h
+./obj_files/cl.o: src_files/cl.c inc_files/cl.h inc_files/j.h
