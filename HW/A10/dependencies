@@ -1,0 +1,5 @@
+./obj_files/main.o: src_files/main.c inc_files/main.h inc_files/globals.h \
+  inc_files/sort.h
+./obj_files/rcards.o: src_files/rcards.c inc_files/rcards.h inc_files/globals.h \
+  inc_files/sort.h
+./obj_files/sort.o: src_files/sort.c inc_files/sort.h inc_files/globals.h

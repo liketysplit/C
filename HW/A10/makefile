@@ -8,7 +8,7 @@ _OBJS = main.o rcards.o sort.o
 OBJS = $(patsubst %, $(OBJ_DIR)/%, $(_OBJS))
 _SRCS = $(patsubst %.o, %.c, $(_OBJS))
 SRCS = $(patsubst %, $(SRC_DIR)/%, $(_SRCS))
-CFLAGS = -g -I$(INC_DIR)
+CFLAGS = -g -I$(INC_DIR) -w
 LDFLAGS = -lm 
 
 all: $(BIN_DIR)/CardGen
